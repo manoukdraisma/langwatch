@@ -87,7 +87,7 @@ class ContextSpan:
         return BaseSpan(
             type=self.type,
             name=self.name,
-            id=id,
+            span_id=id,
             parent_id=self.parent.id if self.parent else None,  # TODO: test
             trace_id=context_tracer.trace_id,  # TODO: test
             input=autoconvert_typed_values(self.input) if self.input else None,
@@ -229,8 +229,8 @@ class BaseContextTracer:
         self.scheduled_send = executor.submit(run_in_thread)
 
     def append_span(self, span: Span):
-        span["id"] = span.get("id", f"span_{nanoid.generate()}")
-        self.spans[span["id"]] = span
+        span["span_id"] = span.get("span_id", f"span_{nanoid.generate()}")
+        self.spans[span["span_id"]] = span
         if self.sent_once:
             self.delayed_send_spans()  # send again if needed
 
