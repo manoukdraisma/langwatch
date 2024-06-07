@@ -64,7 +64,6 @@ export function AnnotationDrawer({
     register,
     handleSubmit,
     watch,
-    getValues,
     setValue,
     formState: { errors },
     reset,
@@ -118,7 +117,7 @@ export function AnnotationDrawer({
             if (listTableView === "list" || listTableView === "table") {
               openDrawer("traceDetails", {
                 traceId: traceId,
-                annotationTab: true,
+                isAnnotationTab: true,
               });
             }
           },
@@ -158,7 +157,7 @@ export function AnnotationDrawer({
             if (listTableView === "list" || listTableView === "table") {
               openDrawer("traceDetails", {
                 traceId: traceId,
-                annotationTab: true,
+                isAnnotationTab: true,
               });
             }
           },
@@ -225,7 +224,7 @@ export function AnnotationDrawer({
                 width={16}
                 cursor="pointer"
                 onClick={() =>
-                  openDrawer("traceDetails", { traceId, annotationTab: true })
+                  openDrawer("traceDetails", { traceId, isAnnotationTab: true })
                 }
               />
             </HStack>
